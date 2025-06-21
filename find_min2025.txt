@@ -1,0 +1,115 @@
+.data
+.text
+#print: cycle 35, cycle 65, final state
+main:
+	
+	and $v0, $zero, $zero
+	and $v1, $zero, $zero
+	and $a0, $zero, $zero
+	and $a1, $zero, $zero
+	and $a2, $zero, $zero
+	and $a3, $zero, $zero
+	and $t0, $zero, $zero
+	and $t1, $zero, $zero
+	ori $t1, $zero, 0x1
+	and $t2, $zero, $zero
+	and $t3, $zero, $zero
+	ori $t3, $zero, 0x2
+	and $t4, $zero, $zero
+	ori $t4, $zero, 0x3
+	and $t5, $zero, $zero
+	ori $t5, $zero, 0x5
+	and $t6, $zero, $zero
+	ori $t6, $zero, 0x6
+	and $t7, $zero, $zero
+	ori $t7, $zero, 0x19
+	and $s0, $zero, $zero
+	and $s1, $zero, $zero
+	and $s2, $zero, $zero
+	ori $s3, $zero, 0x20
+	and $s4, $zero, $zero
+	ori $s4, $zero, 0x25
+	and $s5, $zero, $zero
+	ori $s5, $zero, 0x21
+	and $s6, $zero, $zero
+	ori $s6, $zero, 0x16
+	and $s7, $zero, $zero
+	ori $s7, $zero, 0x12
+	and $t8, $zero, $zero
+	ori $t8, $zero, 0xC
+	and $t9, $zero, $zero
+	ori $t9, $zero, 0xA
+	and $k0, $zero, $zero
+	and $k1, $zero, $zero
+	#and $fp, $zero, $zero
+	and $ra, $zero, $zero
+	
+	#store elements in memory
+	ori $s0, $zero , 0x100 
+	sw $s0, 0($gp) #start address of data segment
+	
+	ori $s0, $zero , 0x9 #
+	sw $s0, 4($gp)
+	
+	ori $s0, $zero , 0x10 
+	sw $s0, 8($gp)
+	
+	ori $s0, $zero , 0x1000 
+	sw $s0, 12($gp)
+	
+	
+	
+	ori $s0, $zero , 0x200 
+	sw $s0, 16($gp)
+	
+	ori $s0, $zero , 0x3 
+	sw $s0, 20($gp)
+	
+	ori $s0, $zero , 0x8 
+	sw $s0, 24($gp)
+	
+	ori $s0, $zero , 0x2000 
+	sw $s0, 28($gp)
+	
+	
+	
+	ori $s0, $zero , 0x600 
+	sw $s0, 32($gp)
+	
+	ori $s0, $zero , 0x8 
+	sw $s0, 36($gp)
+	
+	ori $s0, $zero , 0x13 
+	sw $s0, 40($gp)
+	
+	ori $s0, $zero , 0x27 
+	sw $s0, 44($gp)
+	
+	
+	or $s0, $zero , $gp #start address of data segment
+
+	ori $s2, $zero, 0xC			#load the size of the array
+	and $s1, $zero, $zero
+	
+	ori $s1, $s1, 0x1111
+	sll $s1, $s1, 16
+	ori $s1, $s1, 0x1111
+	#find the minimum value stored
+next:
+	lw $t0, 0($s0)
+	slt $t2, $t0, $s1
+	bne $t2, $zero , less
+	addi $s2, $s2, -1
+	beq $s2, $zero, exit
+	addi $s0, $s0, 4
+	j next
+	
+less:
+	and $s1, $zero, $zero
+	or $s1, $t0, $zero
+	
+	j next
+
+exit:
+	sll $zero, $zero, 0			#THIS IS MANDATORY
+	

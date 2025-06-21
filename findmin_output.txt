@@ -1,0 +1,32 @@
+Name: ****
+University ID: ****
+
+-----Cycle 35-----
+Registers:
+8C	0	0	0	0	0	0	0	0	0	1	0	2	3	5	6	19	0	0	0	20	25	21	16	12	C	0	0	0	10008000	7FFFFFFC	0	0	
+
+Monitors:
+88	and $t9, $zero, $zero	$zero	$zero	$t9	0	0	0	0	-	-	-	-	1	0	0	0	0	00	0	0	1
+
+Memory State:
+
+
+-----Cycle 65-----
+Registers:
+104	0	0	0	0	0	0	0	0	0	1	0	2	3	5	6	19	10008000	0	C	20	25	21	16	12	C	A	0	0	10008000	7FFFFFFC	0	0	
+
+Monitors:
+100	ori $s2, $zero, 0xC	$zero	-	$s2	C	0	-	C	-	-	-	-	0	0	0	0	0	01	0	1	1
+
+Memory State:
+100	9	10	1000	200	3	8	2000	600	8	13	27	
+
+-----Final State-----
+Registers:
+140	0	0	0	0	0	0	0	0	27	1	0	2	3	5	6	19	1000802C	3	0	20	25	21	16	12	C	A	0	0	10008000	7FFFFFFC	0	0	
+
+Memory State:
+100	9	10	1000	200	3	8	2000	600	8	13	27	
+
+Total Cycles:
+170
